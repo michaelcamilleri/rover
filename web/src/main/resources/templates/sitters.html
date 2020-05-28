@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="css/card.css" rel="stylesheet"/>
+
+<div th:if="${#lists.isEmpty(sitters)}" class="card-container">
+    <span>No Sitters Available</span>
+</div>
+
+<div th:each="sitter, stat : ${sitters}" class="card-container">
+    <div class="card">
+        <img th:src="${sitter.imageUrl}" class="thumb"/>
+        <div class="text-container">
+            <span class="index" th:text="${stat.index} + '.'"></span>
+            <span th:text="${sitter.name}"></span>
+        </div>
+        <div class="stars-container">
+            <span th:class="'stars star' + ${sitter.ratingsScore}"></span>
+        </div>
+    </div>
+</div>
